@@ -1,44 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float force = 5;           //
+    public KeyCode upkey;
+    public KeyCode downkey;
+    public KeyCode leftkey;
+    public KeyCode rightkey;
+
+    public int playerscore;
+    public Text scoreUI;
                                       //  THIS AREA IS CALLED THE FIELD.  STARTS BELOW CLASS, ENDS AT START
     Rigidbody2D rb;                   //
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Hello World");
-
-        rb = GetComponent<Rigidbody2D>();
-
-        //rb.AddForce(Vector2.right * force);
+        rb = GetComponent<Rigidbody2D>();     
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Goodbye, World!");
-
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(rightkey))
         {
             rb.AddForce(Vector2.right * force);
         }
 
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(upkey))
         {
             rb.AddForce(Vector2.up * force);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(leftkey))
         {
             rb.AddForce(Vector2.right * -force);
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(downkey))
         {
             rb.AddForce(Vector2.up * -force);
         }
