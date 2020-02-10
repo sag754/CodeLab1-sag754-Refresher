@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PrizeScript : MonoBehaviour
 {
+    public ParticleSystem StarParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class PrizeScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        StarParticles.Play();
         //increase the player score
         collision.gameObject.GetComponent<PlayerController>().playerscore++;
         collision.gameObject.GetComponent<PlayerController>().scoreUI.text = "Score: "+collision.gameObject.GetComponent<PlayerController>().playerscore;
